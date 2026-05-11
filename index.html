@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic Panda Video</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:black;
+font-family:Arial, sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.video-container{
+position:relative;
+width:420px;
+height:740px;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(255,255,255,0.15);
+background:linear-gradient(to bottom,#16351f,#4da96b,#a6f5ba);
+}
+
+.background-glow{
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle, rgba(255,255,255,0.4), transparent 60%);
+left:-120px;
+top:-150px;
+animation:pulse 4s infinite;
+}
+
+.panda{
+position:absolute;
+left:50%;
+top:48%;
+transform:translate(-50%,-50%);
+width:280px;
+height:280px;
+animation:bounce 2s infinite ease-in-out;
+}
+
+.head{
+position:absolute;
+width:240px;
+height:220px;
+background:white;
+border-radius:50%;
+left:20px;
+top:20px;
+}
+
+.ear{
+position:absolute;
+width:80px;
+height:80px;
+background:#111;
+border-radius:50%;
+top:-15px;
+}
+
+.left-ear{left:10px;}
+.right-ear{right:10px;}
+
+.eye-patch{
+position:absolute;
+width:55px;
+height:75px;
+background:#111;
+border-radius:50%;
+top:75px;
+}
+
+.left-eye{left:45px;}
+.right-eye{right:45px;}
+
+.eye{
+position:absolute;
+width:24px;
+height:24px;
+background:white;
+border-radius:50%;
+left:16px;
+top:22px;
+animation:blink 4s infinite;
+}
+
+.pupil{
+position:absolute;
+width:12px;
+height:12px;
+background:black;
+border-radius:50%;
+left:6px;
+top:6px;
+}
+
+.nose{
+position:absolute;
+width:34px;
+height:24px;
+background:black;
+border-radius:50%;
+left:103px;
+top:128px;
+}
+
+.mouth{
+position:absolute;
+width:54px;
+height:20px;
+background:#ff6f9c;
+border-radius:0 0 50px 50px;
+left:93px;
+top:160px;
+animation:talk .22s infinite;
+transform-origin:top;
+}
+
+.cheek{
+position:absolute;
+width:25px;
+height:14px;
+background:#ffb6c9;
+border-radius:50%;
+top:145px;
+opacity:0.8;
+}
+
+.left-cheek{left:48px;}
+.right-cheek{right:48px;}
+
+.caption{
+position:absolute;
+width:100%;
+bottom:110px;
+text-align:center;
+color:white;
+font-size:34px;
+font-weight:bold;
+text-shadow:0 0 15px rgba(0,0,0,0.8);
+padding:0 20px;
+line-height:1.3;
+animation:fadeIn 2s ease;
+}
+
+.subcaption{
+position:absolute;
+width:100%;
+bottom:55px;
+text-align:center;
+font-size:28px;
+color:#ffd9e7;
+font-weight:bold;
+text-shadow:0 0 12px rgba(0,0,0,0.8);
+}
+
+.play-btn{
+position:absolute;
+top:25px;
+right:25px;
+background:white;
+color:black;
+border:none;
+padding:12px 20px;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+font-size:16px;
+}
+
+.heart{
+position:absolute;
+font-size:30px;
+color:#ff8db3;
+animation:float linear forwards;
+}
+
+.sparkle{
+position:absolute;
+width:8px;
+height:8px;
+background:white;
+border-radius:50%;
+animation:sparkle 2s infinite;
+}
+
+@keyframes talk{
+0%{transform:scaleY(1);} 
+50%{transform:scaleY(2.8);} 
+100%{transform:scaleY(1);} 
+}
+
+@keyframes bounce{
+0%,100%{transform:translate(-50%,-50%) translateY(0);} 
+50%{transform:translate(-50%,-50%) translateY(-12px);} 
+}
+
+@keyframes blink{
+0%,45%,100%{height:24px;} 
+50%{height:2px;} 
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);} 
+50%{transform:scale(1.08);} 
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);} 
+to{opacity:1;transform:translateY(0);} 
+}
+
+@keyframes float{
+0%{
+transform:translateY(0) scale(0.8);
+opacity:1;
+}
+100%{
+transform:translateY(-900px) scale(1.6);
+opacity:0;
+}
+}
+
+@keyframes sparkle{
+0%,100%{opacity:0.2;transform:scale(1);} 
+50%{opacity:1;transform:scale(2);} 
+}
+</style>
+</head>
+
+<body>
+
+<div class="video-container">
+
+<div class="background-glow"></div>
+
+<button class="play-btn" onclick="playVideo()">▶ PLAY</button>
+
+<div class="panda">
+<div class="head">
+
+<div class="ear left-ear"></div>
+<div class="ear right-ear"></div>
+
+<div class="eye-patch left-eye">
+<div class="eye"><div class="pupil"></div></div>
+</div>
+
+<div class="eye-patch right-eye">
+<div class="eye"><div class="pupil"></div></div>
+</div>
+
+<div class="cheek left-cheek"></div>
+<div class="cheek right-cheek"></div>
+
+<div class="nose"></div>
+<div class="mouth"></div>
+
+</div>
+</div>
+
+<div class="caption">
+Sorry adi pls give me a chance<br>I LOVE U ❤️
+</div>
+
+<div class="subcaption">
+I wont repeat it 
+</div>
+
+</div>
+
+<script>
+function playVideo(){
+
+const msg = new SpeechSynthesisUtterance(
+'Sorry adi pls give me a chance!! I love u I wont repeat it'
+);
+
+msg.pitch = 1.7;
+msg.rate = 0.92;
+msg.volume = 1;
+
+speechSynthesis.cancel();
+speechSynthesis.speak(msg);
+}
+
+function createHeart(){
+const heart = document.createElement('div');
+heart.className='heart';
+heart.innerHTML='❤';
+heart.style.left=Math.random()*400+'px';
+heart.style.bottom='-50px';
+heart.style.animationDuration=(Math.random()*3+4)+'s';
+document.querySelector('.video-container').appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+}
+
+setInterval(createHeart,350);
+
+function createSparkle(){
+const s=document.createElement('div');
+s.className='sparkle';
+s.style.left=Math.random()*420+'px';
+s.style.top=Math.random()*740+'px';
+document.querySelector('.video-container').appendChild(s);
+
+setTimeout(()=>{
+s.remove();
+},2000);
+}
+
+setInterval(createSparkle,250);
+</script>
+
+</body>
+</html>
